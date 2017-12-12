@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Check for inspec installation
+
+
+# Generate the SSH key pair, if it doesn't exist
+if [[ ! -f "id_rsa_srechallenge" ]]; then
+	echo "Generating 4096-bit RSA SSH key pair. This can take a few seconds."
+	ssh-keygen -t rsa -b 4096 -f id_rsa_srechallenge -N ""
+fi
+
+
+# Run terrafrom
+terraform apply
+
+# Set server's public IP as a env variable
+export SRE_CHALLENGE_PUBLIC_IP=$(terraform output web_public_ip)
+
+# Run tests
+inspec exec tests/nginx_spec.rb tests/firewall_spec.rb --target=ssh://ubuntu@$SRE_CHALLENGE_PUBLIC_IP -i id_rsa_srechallenge --sudo

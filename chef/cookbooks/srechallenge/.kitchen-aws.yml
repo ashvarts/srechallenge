@@ -1,0 +1,24 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id:  <%= ENV['AWS_SSH_KEY_ID'] %>
+  require_chef_omnibus: true
+  instance_type: c4.large
+
+transport:
+  ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
+  username: ubuntu
+
+platforms:
+  - name: ubuntu-16.04
+    driver:
+      image_id: ami-d15a75c7
+      block_device_mappings:
+        - device_name: /dev/sda1
+          ebs:
+            delete_on_termination: true
+
+suites:
+  - name: default
+    run_list:
+      - recipe[srechallenge::default]

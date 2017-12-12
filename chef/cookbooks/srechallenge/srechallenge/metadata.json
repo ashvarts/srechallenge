@@ -1,0 +1,44 @@
+{
+  "name": "srechallenge",
+  "description": "Installs/Configures web server per srechallenge",
+  "long_description": "Installs/Configures srechallenge",
+  "maintainer": "Arthur Shvarts",
+  "maintainer_email": "ashvarts@gmail.com",
+  "license": "all_rights",
+  "platforms": {
+  },
+  "dependencies": {
+    "chef_nginx": ">= 0.0.0",
+    "firewall": ">= 0.0.0",
+    "iptables": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+  },
+  "version": "0.1.0",
+  "source_url": "",
+  "issues_url": "",
+  "privacy": false,
+  "chef_versions": [
+
+  ],
+  "ohai_versions": [
+
+  ],
+  "gems": [
+
+  ]
+}
